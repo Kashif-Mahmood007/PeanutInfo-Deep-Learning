@@ -1,0 +1,191 @@
+:root {
+  --main-color: #083022;
+  --main-heading: #79B900;
+  --sub-heading: #E4FC7A;
+  --white-font-color: #fff;
+  --gray-font-color: #808080;
+  --border-top-color: #2f9571;
+  --border-color-all: #2f9571;
+  --button-color: #083022;
+  --button-hover-background-color: #df911c;
+  --button-hover-font-color: #fff;
+  --black-font-color: #000;
+  --button-font-color: #fff;
+  --button-border-color: #DEE2E6;
+  --wheat-color: #E8B35E;
+  --cream-color: #F5EFE6;
+  --accordian-hover-color: #1B6B4B;
+}
+
+/* Logout Button Designing */
+
+.nav-user-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-user-info {
+  color: var(--white-font-color);
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-user-info i {
+  font-size: 1.4rem;
+  margin-right: 5px;
+}
+
+.logout-button {
+  font-weight: 500;
+  border: 0px;
+  padding: 7px 10px;
+}
+
+
+
+/* Login and signup buttons Designing */
+
+.login-buttons i {
+  margin-right: 6px;
+  font-size: 1rem;
+}
+
+
+
+/* Alert for error or successfully signup  */
+
+.alert {
+  margin-top: 80px;
+  margin-bottom: 0px;
+  background-color: #df911c;
+  border-radius: 0px;
+  border: 0px;
+}
+
+
+.btn-close-alert {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+  opacity: 1;
+}
+
+
+
+
+/* Modal designing */
+
+
+
+.modal-header {
+  border-bottom: 1px solid var(--wheat-color);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--wheat-color);
+}
+
+
+
+
+
+
+/* Modal designing */
+
+
+.custom-modal-content {
+  background-color: var(--main-color);
+  color: var(--wheat-color);
+  border-radius: 10px;
+  padding: 1rem
+}
+
+
+
+/* Modal Title */
+.custom-modal-title {
+  color: var(--main-heading);
+  font-weight: bold;
+}
+
+
+
+/* Modal Header/Footer Borders */
+.modal-header {
+  border-bottom: 1px solid var(--wheat-color);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--wheat-color);
+}
+
+
+
+/* Custom Primary Button */
+.custom-btn-primary {
+  background-color: var(--wheat-color);
+  color: var(--main-color);
+  border: none;
+  font-weight: 500;
+}
+
+.custom-btn-primary:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--black-font-color);
+}
+
+
+
+/* Custom Secondary Button */
+.custom-btn-secondary {
+  background-color: transparent;
+  color: var(--wheat-color);
+  border: 1px solid var(--wheat-color);
+}
+
+.custom-btn-secondary:hover {
+  background-color: var(--wheat-color);
+  color: var(--main-color);
+}
+
+
+
+
+/* Input Fields */
+.custom-input-field {
+  background-color: var(--main-color);
+  color: var(--wheat-color);
+  border-radius: 10px;
+  border: 1px solid var(--wheat-color);
+}
+
+.custom-input-field:focus {
+  background-color: var(--main-color);
+  color: var(--wheat-color);
+  border-color: var(--button-hover-background-color);
+  box-shadow: 0 0 0 0.25rem rgba(223, 145, 28, 0.25);
+}
+
+
+
+/* Close Button */
+.btn-close-modal {
+  filter: invert(72%) sepia(69%) saturate(380%) hue-rotate(358deg) brightness(95%) contrast(90%);
+}
+
+
+
+/* Placeholder Color */
+.custom-input-field::placeholder {
+  color: var(--wheat-color);
+  opacity: 0.6;
+}
+
+
+
+
+/* Form Labels */
+.form-label {
+  color: var(--sub-heading);
+}
