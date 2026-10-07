@@ -3,7 +3,7 @@ from torchvision import transforms
 from PIL import Image
 import torch
 import torch.nn as nn
-from torchvision.models import convnext_tiny, convnext_small
+from torchvision.models import convnext_tiny, resnet50
 import io
 
 # Initialize Flask app
@@ -34,10 +34,21 @@ def load_convnext_tiny_model(model_path, num_classes):
     return model
 
 
-def load_convnext_small_model(model_path, num_classes):
-    model = convnext_small(pretrained=False)
-    model.classifier[2] = nn.Linear(model.classifier[2].in_features, num_classes)
-    model.load_state_dict(torch.load(model_path, map_location=device))
+def load_resnet50_model(model_path, num_classes):
+    state = torch.load(model_path, map_location=device, weights_only=False)
+    if isinstance(state, nn.Module):          # whole model was saved
+        model = state
+    else:
+        state = state.get("state_dict", state.get("model_state_dict", state))
+        state = {k.replace("module.", "", 1): v for k, v in state.items()}
+        model = resnet50(weights=None)
+        in_features = model.fc.in_features
+        # Case A: plain head (fc.weight). Case B: edit this Sequential to match your training notebook.
+        if "fc.weight" in state:
+            model.fc = nn.Linear(in_features, num_classes)
+        else:
+            model.fc = nn.Sequential(nn.Dropout(0.5), nn.Linear(in_features, num_classes))
+        model.load_state_dict(state)
     model.to(device)
     model.eval()
     return model
@@ -46,7 +57,7 @@ def load_convnext_small_model(model_path, num_classes):
 # === LOAD MODELS ===
 classification_model = load_convnext_tiny_model('Classification_Model.pth', num_classes=3)
 pest_model = load_convnext_tiny_model('Pest_Model.pth', num_classes=5)
-disease_model = load_convnext_small_model('Disease_Model.pth', num_classes=5)
+disease_model = load_resnet50_model('Disease_Model.pth', num_classes=5)
 
 
 
